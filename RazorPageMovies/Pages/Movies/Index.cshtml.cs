@@ -32,7 +32,7 @@ namespace RazorPageMovies.Pages.Movies
 
         public async Task OnGetAsync()
         {
-            IQueryable<string> GeneroQuery = from m in _context.Movie
+            IQueryable<string> generoQuery = from m in _context.Movie
                                              orderby m.Genero
                                              select m.Genero;
             var movies = from m in _context.Movie
@@ -51,8 +51,8 @@ namespace RazorPageMovies.Pages.Movies
 
             if (_context.Movie != null)
             {
-                Generos= new SelectList(await GeneroQuery.Distinct().ToListAsync());
-                Movie = await _context.Movie.ToListAsync();
+                Generos= new SelectList(await generoQuery.Distinct().ToListAsync());
+                Movie = await movies.ToListAsync();
             }
         }
     }
